@@ -1,4 +1,4 @@
-import { fetchRoles, createRole, updateRole, deleteRole } from '../api/roleApi.js';
+import { fetchRoles, createRole, updateRole, deleteRole, searchRoleByDescription} from '../api/roleApi.js';
 
 export const getRole = async () => {
     return await fetchRoles();
@@ -14,4 +14,8 @@ export const editRole = async (id, role) =>{
 
 export const removeRole = async(id) =>{
     return await deleteRole(id);
+};
+
+export const findRoleByDescription = async (description) => {
+    return await searchRoleByDescription(description);
 };
