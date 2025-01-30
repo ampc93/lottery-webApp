@@ -11,6 +11,9 @@ const Navbar = () => {
         <NavLink to="/roles" className="hover:text-primary transition">
           Roles
         </NavLink>
+        <NavLink to="/permission" className="hover:text-primary transition">
+          Permisos
+        </NavLink>
       </div>
     </nav>
   );

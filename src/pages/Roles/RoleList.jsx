@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getRole, removeRole, addRole, editRole, findRoleByDescription } from '../../services/roleServices';
 import { useNavigate } from 'react-router-dom';
+import { FiEdit, FiTrash, FiSearch, FiPlus } from 'react-icons/fi'
 import RoleModal from './RoleModal';
 
 const RoleList = () => {
@@ -8,6 +9,7 @@ const RoleList = () => {
     const [search, setSearch] = useState('');
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [currentRole, setCurrentRole] = useState(null);
+    const [selectedRole, setSelectedRole] = useState(null); 
     const [message, setMessage] = useState('');
     const navigate = useNavigate();
 
@@ -60,78 +62,89 @@ const RoleList = () => {
     }
 
     return (
-        <div className="p-6 bg-neutral-light min-h-screen">
-            <h1 className="text-3xl font-bold text-neutral-dark mb-6">Roles</h1>
-            <div className="flex justify-between items-center mb-6">
-                <input
-                    type="text"
-                    placeholder="Buscar roles..."
-                    value={search}
-                    onChange={(e) => setSearch(e.target.value)}
-                    className="border rounded px-3 py-2 w-full md:w-1/3"
-                />
-                  <button
-                    onClick={() => handleSearch()}
-                    className="bg-green-500 text-white py-2 px-4 rounded w-full md:w-auto"
-                >
-                    Buscar
-                </button>
+        <div className="p-4 sm:p-6 bg-gray-100 min-h-screen">
+            <h1 className="text-2xl font-semibold text-gray-800 mb-4 text-center">Gestión de Roles</h1>
+            <div className='flex flex-col sm:flex-row justify-between items-center gap-4 mb-6'>
+                <div className="flex items-stretch w-full sm:w-auto">
+                    <input
+                        type="text"
+                        placeholder="Buscar roles..."
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                        className="border rounded-l px-3 py-2 w-full sm:w-80 text-sm focus:outline-none focus:ring focus:border-blue-300"
+                    />
+                    <button
+                        onClick={() => handleSearch()}
+                        className="bg-blue-500 text-white px-4 py-2 rounded-r text-sm hover:bg-blue-600 focus:outline-none"
+                    >
+                        <FiSearch />
+                    </button>
+                </div>
                 <button
                     onClick={() => {
                         setCurrentRole(null);
                         setIsModalOpen(true);
                     }}
-                    className="bg-blue-500 text-white py-2 px-4 rounded"
+                    className="bg-green-600 text-white px-4 py-2 rounded text-sm flex items-center gap-2 hover:bg-green-700 focus:outline-none"
                 >
-                    Agregar Roles
+                    <FiPlus /> Agregar Rol
                 </button>
             </div>
-            <table className="min-w-full table-auto">
-                <thead>
-                    <tr>
-                        <th className="border-b p-2">Tipo de Acceso</th>
-                        <th className="border-b p-2">Acción</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {roles.length > 0 ? (
-                      roles.map((role) => (
+                
+            <div className='overflow-x-auto'>
+                <table className="w-full border border-gray-300 rounded-md shadow-sm text-sm">
+                    <thead className='bg-gray-200'>
+                        <tr>
+                            <th className="text-left p-1 border-b border-gray-300">Tipo de Acceso</th>
+                            <th className="text-right p-1 border-b border-gray-300">Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {roles.length > 0 ? (
+                        roles.map((role) => (
 
-                        <tr key={role._id}>
-                            <td className="border-b p-2">{role.description}</td>
-                            <td className="border-b p-2">
-                                <div className="flex space-x-2">
-                                    <button
-                                        onClick={() => {
-                                            setCurrentRole(role);
-                                            setIsModalOpen(true);
-                                        }}
-                                        className="bg-yellow-500 text-white py-1 px-2 rounded"
-                                    >
-                                        Edit
-                                    </button>
-                                    <button
-                                        onClick={() => handleDelete(role._id)}
-                                        className="bg-red-500 text-white py-1 px-2 rounded"
-                                    >
-                                        Delete
-                                    </button>
-                                </div>
+                            <tr key={role._id} 
+                                className={`hover:bg-gray-200 ${
+                                    selectedRole && selectedRole._id === role._id
+                                        ? 'bg-blue-100'
+                                        : ''
+                                }`}
+                                onClick={() => setSelectedRole(role)}
+                            >
+                                <td className="p-1 border-b border-gray-300 text-gray-700">{role.description}</td>
+                                <td className="p-1 border-b border-gray-300">
+                                    <div className="flex justify-end items-center gap-2">
+                                        <button
+                                            onClick={() => {
+                                                setCurrentRole(role);
+                                                setIsModalOpen(true);
+                                            }}
+                                            className="bg-blue-500 text-white px-3 py-1 rounded text-xs flex items-center gap-1 hover:bg-blue-600 focus:outline-none"
+                                        >
+                                            <FiEdit /> Editar
+                                        </button>
+                                        <button
+                                            onClick={() => handleDelete(role._id)}
+                                            className="bg-red-600 text-white px-3 py-1 rounded text-xs flex items-center gap-1 hover:bg-red-700 focus:outline-none"
+                                        >
+                                             <FiTrash /> Eliminar
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                        )) 
+                    ): (
+
+                        <tr>
+                            <td colSpan="2" className="p-4 text-center text-gray-500">
+                                No se encontraron roles
                             </td>
                         </tr>
-
-                    )) 
-                ): (
-
-                    <tr>
-                        <td colSpan="2" className="p-4 text-center text-gray-500">
-                            No se encontraron roles
-                        </td>
-                    </tr>
-                )}
-                </tbody>
-            </table>
-
+                    )}
+                    </tbody>
+                </table>
+            </div>
             {isModalOpen && (
                 <RoleModal 
                     role={currentRole}
