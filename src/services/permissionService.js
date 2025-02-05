@@ -1,9 +1,26 @@
-import { assignOptionToRole, deleteOptionFromRole} from '../api/permissionApi'; 
+import { createPermission,
+         getPermissions,
+         getPermissionById,
+         updatePermission,
+         deletePermission,} from '../api/permissionApi.js'; 
 
-export const assignOption = async (data) => {
-    return await assignOptionToRole(data);
+
+export const fetchPermissions = async () =>{
+    return await getPermissions();
 };
 
-export const removeOptionFromRole = async (data) =>{
-    return await deleteOptionFromRole(data);
+export const addPermission = async (permission) => {
+    return await createPermission(permission);
+};
+
+export const fetchPermissionById = async (id) =>{
+    return await getPermissionById(id);
+};
+
+export const editPermission = async (id, permission) =>{
+    return await updatePermission(id, permission);
+};
+
+export const removePermission = async (id) =>{
+    return deletePermission(id);
 };

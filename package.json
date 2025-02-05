@@ -10,7 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@fluentui/react": "^8.122.8",
+    "@fluentui/react": "^8.122.9",
+    "@fluentui/react-cards": "^0.205.198",
+    "@fluentui/react-components": "^9.58.2",
     "@fluentui/react-hooks": "^8.8.16",
     "axios": "^1.7.9",
     "prop-types": "^15.8.1",

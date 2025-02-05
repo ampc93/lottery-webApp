@@ -25,9 +25,6 @@ import {
   removeSubOption,
 } from "../../services/optionService";  // Asegúrate de tener estos métodos en tu servicio.
 
-import { initializeIcons } from "@fluentui/react/lib/Icons";
-initializeIcons();
-
 const PermissionsPage = () => {
   const [options, setOptions] = useState([]);
   const [isPanelOpen, setIsPanelOpen] = useState(false);
