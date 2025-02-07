@@ -4,6 +4,7 @@ import RoleList from '../pages/Roles/RoleList';
 import Home from '../pages/Home'; 
 import PermissionList from '../pages/Permission/PermissionList';
 import PermissionManager from '../pages/Permission/PermissionManager';
+import UserList from '../pages/Users/UserList';
 
 const AppRoutes = () =>{
     return(
@@ -12,6 +13,7 @@ const AppRoutes = () =>{
             <Route path="/roles" element={<RoleList />} />
             <Route path="/permission" element={<PermissionList/>} />
             <Route path="/PermissionManager" element={<PermissionManager/>} />
+            <Route path="/UserList" element={<UserList/>} />
         </Routes>
     );
 };
