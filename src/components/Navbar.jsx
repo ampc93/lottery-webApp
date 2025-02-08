@@ -17,7 +17,7 @@ const Navbar = () => {
         <NavLink to="/PermissionManager" className="hover:text-primary transition">
           Asignacion de Permisos
         </NavLink>
-        <NavLink to="/UserList" className="hover:text-primary transition">
+        <NavLink to="/users" className="hover:text-primary transition">
           Gestion de Usuarios
         </NavLink>
       </div>

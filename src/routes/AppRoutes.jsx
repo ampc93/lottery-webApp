@@ -13,7 +13,7 @@ const AppRoutes = () =>{
             <Route path="/roles" element={<RoleList />} />
             <Route path="/permission" element={<PermissionList/>} />
             <Route path="/PermissionManager" element={<PermissionManager/>} />
-            <Route path="/UserList" element={<UserList/>} />
+            <Route path="/users" element={<UserList/>} />
         </Routes>
     );
 };

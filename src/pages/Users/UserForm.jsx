@@ -60,11 +60,15 @@ const UserForm = ({ user, closeModal, roles }) => {
 
   const handlePhotoUpload = (e) => {
     const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => setPhoto(reader.result);
-      reader.readAsArrayBuffer(file);
-    }
+    if (!file) return;
+  
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      // Convertir a Base64
+      const base64String = reader.result.split(",")[1];
+      setPhoto(base64String); // Guardamos solo la parte útil
+    };
+    reader.readAsDataURL(file); //  Usa `readAsDataURL` en lugar de `readAsArrayBuffer`
   };
 
   return (
