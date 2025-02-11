@@ -1,5 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+import MainLayout from '../layouts/MainLayout';
 import RoleList from '../pages/Roles/RoleList';
 import Home from '../pages/Home'; 
 import PermissionList from '../pages/Permission/PermissionList';
@@ -9,11 +10,13 @@ import UserList from '../pages/Users/UserList';
 const AppRoutes = () =>{
     return(
         <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/roles" element={<RoleList />} />
-            <Route path="/permission" element={<PermissionList/>} />
-            <Route path="/PermissionManager" element={<PermissionManager/>} />
-            <Route path="/users" element={<UserList/>} />
+            <Route path="/" element={<MainLayout />}>
+                <Route path="/" element={<Home />} />
+                <Route path="/roles" element={<RoleList />} />
+                <Route path="/permission" element={<PermissionList/>} />
+                <Route path="/PermissionManager" element={<PermissionManager/>} />
+                <Route path="/users" element={<UserList/>} />
+            </Route>
         </Routes>
     );
 };

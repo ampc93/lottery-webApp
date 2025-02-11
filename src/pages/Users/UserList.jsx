@@ -102,7 +102,6 @@ const UserList = () => {
       if (searchTerm.trim() !== '') {
         try {
           const result = await findUserByName(searchTerm);
-          console.log(result); // Verifica que `result` sea como esperas
           setFilteredUsers(Array.isArray(result.users) ? result.users : []); // Asegúrate de acceder a `result.users`
         } catch (error) {
           console.error('Error al buscar usuario:', error);
