@@ -24,7 +24,12 @@ export const logoutUser = async (userId) => {
     try {
         const response = await axios.post(`${API_URL}/logout`, 
             {userId}, 
-            { withCredentials: true }
+            { withCredentials: true,
+              headers: {
+                    'Content-Type': 'application/json'
+                }
+
+            }
         );
         return response.data;
     } catch (error) {

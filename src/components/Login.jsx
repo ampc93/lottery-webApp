@@ -27,7 +27,7 @@ const Login = () => {
     try {
 
       await login(username, password);
-      console.log(accessToken);
+      
       if(accessToken){
       navigate('/dashboard');
       }
