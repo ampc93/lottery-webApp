@@ -7,6 +7,7 @@ import PermissionList from '../pages/Permission/PermissionList';
 import PermissionManager from '../pages/Permission/PermissionManager';
 import UserList from '../pages/Users/UserList';
 import Login from '../components/Login';
+import UserProfileEdit from '../pages/Users/UserProfileEdit';
 import ProtectedRoute from '../components/ProtectedRoute';
 import PublicRoute from '../components/PublicRoute';
 
@@ -34,6 +35,7 @@ const AppRoutes = () =>{
                 <Route path="/permission" element={<PermissionList/>} />
                 <Route path="/PermissionManager" element={<PermissionManager/>} />
                 <Route path="/users" element={<UserList/>} />
+                <Route path="/perfil" element={<UserProfileEdit/>} />
             </Route>
 
         </Routes>

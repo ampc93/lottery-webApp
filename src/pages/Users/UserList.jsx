@@ -295,7 +295,7 @@ const UserList = () => {
       </Stack>
 
       <Panel isOpen={showPanel} onDismiss={() => setShowPanel(false)} type={PanelType.medium} headerText={selectedUser ? 'Editar Usuario' : 'Crear Nuevo Usuario'}>
-        <UserForm user={selectedUser} closeModal={() => setShowPanel(false)} roles={roles} fetchUsers={fetchUsers} />
+        <UserForm currentUser={selectedUser} closeModal={() => setShowPanel(false)} roles={roles} fetchUsers={fetchUsers} />
       </Panel>
     </Stack>
   );

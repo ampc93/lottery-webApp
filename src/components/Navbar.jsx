@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Persona, PersonaSize } from '@fluentui/react';
 import { useAuth } from '../context/authContext';
 
@@ -94,6 +95,7 @@ const Navbar = ({ collapsed }) => {
               </div>
 
               <a
+                as={Link}
                 href="/perfil"
                 className="w-full text-blue-500 hover:underline block text-center mb-2"
               >
