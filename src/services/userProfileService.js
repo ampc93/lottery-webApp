@@ -30,6 +30,7 @@ export const addUser = async (user) => {
 
 export const updateUser = async (id, user) => {
     try {
+        console.log(user);
         return await userApi.updateUser(id, user);
     } catch (error) {
         console.error(`Error al actualizar usuario con ID ${id}:`, error);

@@ -28,11 +28,15 @@ export const AuthProvider = ({ children }) => {
 
   const verify = async () => {
 
+    const userId = parseJwt(accessToken)?.id;
     const response = await verifyToken();
+    
     if (response?.success && response?.result?.accessToken) {
       setAccessToken(response?.result?.accessToken);
     } else {
-      await logoutUser(response?.result?._id); // Si falla el refresco, cerrar sesión
+      if(userId){
+        await logoutUser(userId); // Si falla el refresco, cerrar sesión
+        }
     }
 
   };
@@ -87,7 +91,7 @@ export const AuthProvider = ({ children }) => {
 
 
   return (
-    <AuthContext.Provider value={{ accessToken, user, login, logout }}>
+    <AuthContext.Provider value={{ accessToken, user, setUser, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
