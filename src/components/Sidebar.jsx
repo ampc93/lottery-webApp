@@ -7,7 +7,8 @@ const sidebarLinks = [
   { name: 'Roles', url: '/roles', icon: <FaUserShield /> },
   { name: 'Permisos', url: '/permission', icon: <FaKey /> },
   { name: 'Asignación de Permisos', url: '/PermissionManager', icon: <FaTasks /> },
-  { name: 'Gestión de Usuarios', url: '/users', icon: <FaUsers /> }
+  { name: 'Gestión de Usuarios', url: '/users', icon: <FaUsers /> },
+  { name: 'Lottery', url: '/lotteries', icon: <FaUsers /> }
 ];
 
 const Sidebar = ({ collapsed, setCollapsed }) => {
